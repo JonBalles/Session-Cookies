@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tp de Session & Cookies</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <style>
+        body{
+          background-color: <%= session.user.color %>;
+         }
+      </style>
+    <div class="respuesta">
+    <h2><%= session.user.nombre %>, gracias por visitarnos</h2>
+    <p>no te olvides que elegiste este color: <%= session.user.color %></p>
+    <img src="https://media.giphy.com/media/tbyi455ahTA6A/giphy.gif" width="480" height="360">
+    <hr>
+    <p>El Restart destruye la sesion</p>
+    <form action="" method="post">
+        
+        <button class="btn" type="submit">Restart</button>
+    </form>
+
+</div>
+</body>
+</html>

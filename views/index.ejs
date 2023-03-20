@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tp de Session & Cookies</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Tp de Session & Cookies</h1>
+    <hr>
+
+    <% if(session.user) { %>
+      <style>
+        body{
+          background-color: <%= session.user.color %>;
+          }
+      </style>
+      <hr>
+      <div class="respuesta">
+      <h2>Hola <%= session.user.nombre %></h2>
+      <p>Elegiste el color <%= session.user.color %></p>
+      <p>Tu Email es <%= session.user.email %></p>
+      <p>Tu edad es <%= session.user.edad %></p>
+      <hr>
+      <button class="btn"><a href="/next">Siguiente</a></button>
+      </div>
+    <% } else { %>
+
+    <section >
+      <form class="form" action="" method="post">
+        <div>
+          <label for="nombre">Ingrese su nombre</label>
+          <input type="text" id="nombre" placeholder="Ej. Bob Esponja" name="nombre">
+          <small class="text-error"><%= locals.errors && errors.nombre ? errors.nombre.msg : null%></small>
+        </div>
+        <div>
+          <label for="email">Ingrese su email</label>
+          <input type="email" id="email" name="email" placeholder="xxx@mail.com">
+          <small class="text-error"><%= locals.errors && errors.email ? errors.email.msg : null%></small>
+        </div>
+        <div>
+          <label for="edad">Ingrese su edad</label>
+          <input type="number" id="edad" name="edad">
+          <small class="text-error"><%= locals.errors && errors.edad ? errors.edad.msg : null%></small>
+        </div>
+          <label for="color">Elija el color</label>
+          <select name="color" id="color">
+            <option value="blue">Azul</option>
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="purple">Violeta</option>
+            <option value="orange">Naranja</option>
+          </select>
+        </div>
+        <div>
+        <label for="recordar">Recordar color</label>
+        <input type="checkbox" name="recordar" id="recordar">
+        </div>
+        <div>
+          <button class="btn" type="submit">Enviar Datos</button>
+        </div>
+      </form>
+      <hr>
+      <% } %>
+    </section>
+  </body>
+</html>
